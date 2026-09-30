@@ -7,7 +7,7 @@
  * - Envía JSON o FormData (FormData se usa para subir el afiche).
  * - Lanza errores con el mensaje del backend, que siempre responde
  *   {"error": "...", "codigo": 400, "campos": {...}}
- *   (ver config/exceptions.py).
+ *   (ver venta_entradas/exceptions.py).
  */
 
 const TOKENS_KEY = "tokens";

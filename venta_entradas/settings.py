@@ -109,7 +109,7 @@ INSTALLED_APPS = [
 #
 # Se muestran en el footer de:
 # - Swagger (/api/docs/), login de la API y panel /admin/
-#   mediante el context processor config.context_processors.alumno.
+#   mediante el context processor venta_entradas.context_processors.alumno.
 # - El frontend React, que los obtiene desde GET /api/alumno/.
 ALUMNO = {
     "nombre": "Daniel Alejandro Aceitón Sepúlveda",
@@ -156,7 +156,7 @@ MIDDLEWARE = [
 # CONFIGURACIÓN PRINCIPAL DEL PROYECTO
 # ============================================================
 
-ROOT_URLCONF = "config.urls"
+ROOT_URLCONF = "venta_entradas.urls"
 
 
 # ============================================================
@@ -181,13 +181,13 @@ TEMPLATES = [
 
                 # Agrega la variable {{ alumno }} a todas las
                 # plantillas HTML que se renderizan con request.
-                "config.context_processors.alumno",
+                "venta_entradas.context_processors.alumno",
             ],
 
             # Etiquetas disponibles en todas las plantillas sin
             # {% load %}: {% footer_alumno %}.
             "builtins": [
-                "config.templatetags_butaca",
+                "venta_entradas.templatetags_butaca",
             ],
         },
     },
@@ -198,7 +198,7 @@ TEMPLATES = [
 # SERVIDORES WSGI / ASGI
 # ============================================================
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION = "venta_entradas.wsgi.application"
 
 
 # ============================================================
@@ -291,7 +291,7 @@ STATICFILES_DIRS = [
 # MEDIA_ROOT: carpeta física donde se guardan los archivos.
 # MEDIA_URL:  prefijo de la URL pública para acceder a ellos.
 #
-# En desarrollo Django los sirve desde config/urls.py.
+# En desarrollo Django los sirve desde venta_entradas/urls.py.
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -366,8 +366,8 @@ REST_FRAMEWORK = {
     # --------------------------------------------------------
     # Todas las respuestas de error de la API tienen el formato
     # {"error": "...", "codigo": 400, "campos": {...}}.
-    # Ver config/exceptions.py.
-    "EXCEPTION_HANDLER": "config.exceptions.manejador_errores",
+    # Ver venta_entradas/exceptions.py.
+    "EXCEPTION_HANDLER": "venta_entradas.exceptions.manejador_errores",
 }
 
 
@@ -427,7 +427,7 @@ SPECTACULAR_SETTINGS = {
 
     # Respaldo: cualquier vista de spectacular que no defina
     # sus propios permisos queda restringida a ORGANIZADOR/ADMIN.
-    # Las vistas protegidas están en config/views.py.
+    # Las vistas protegidas están en venta_entradas/views.py.
     "SERVE_PERMISSIONS": ["usuarios.permissions.IsGestor"],
 
     # Evento y Compra tienen un campo "estado" con opciones
