@@ -1,0 +1,183 @@
+/* ============================================================
+   ACCESO (LOGIN Y REGISTRO)
+   Pantalla dividida: panel de marca oscuro + formulario.
+   ============================================================ */
+
+.auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 68px);
+}
+
+@media (max-width: 860px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth__marca {
+    display: none;
+  }
+}
+
+/* ---------- Panel de marca ---------- */
+
+.auth__marca {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--tinta);
+  color: #fff;
+}
+
+.auth__marca::before,
+.auth__marca::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.6;
+}
+
+.auth__marca::before {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -120px;
+  background: #7c3aed;
+}
+
+.auth__marca::after {
+  width: 380px;
+  height: 380px;
+  bottom: -140px;
+  right: -80px;
+  background: #ec4899;
+}
+
+.auth__marca-interior {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  padding: 3rem;
+  margin: 0 auto;
+}
+
+.auth__logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  background: var(--degradado);
+}
+
+.auth__marca h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.auth__marca p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.05rem;
+}
+
+.auth__ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transform: rotate(-3deg);
+}
+
+.auth__ticket span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* QR decorativo dibujado con degradados. */
+.auth__ticket-qr {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(90deg, #fff 0 6px, transparent 6px 10px),
+    repeating-linear-gradient(0deg, #fff 0 6px, transparent 6px 10px);
+  background-blend-mode: difference;
+  opacity: 0.85;
+}
+
+/* ---------- Formulario ---------- */
+
+.auth__formulario {
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem;
+}
+
+.auth__tarjeta {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth__tarjeta h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.auth__tarjeta .subtitulo {
+  margin-bottom: 1.5rem;
+}
+
+.auth__clave {
+  position: relative;
+}
+
+.auth__clave .input {
+  padding-right: 4.5rem;
+}
+
+.auth__ver {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--violeta);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth__ayuda {
+  margin: -0.4rem 0 1.25rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.auth__alterno {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+}
+
+.auth__alterno a {
+  font-weight: 700;
+}

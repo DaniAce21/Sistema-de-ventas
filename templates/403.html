@@ -1,0 +1,13 @@
+{% extends "errores/base_error.html" %}
+{% comment %}
+  ERROR 403 — El usuario no tiene permiso para esta página.
+{% endcomment %}
+
+{% block titulo %}Acceso denegado{% endblock %}
+{% block icono %}🔒{% endblock %}
+{% block codigo %}403{% endblock %}
+{% block mensaje %}Acceso restringido{% endblock %}
+{% block detalle %}
+  Tu cuenta no tiene permiso para ver esta sección.
+  Algunas áreas, como la documentación de la API, son exclusivas para administradores.
+{% endblock %}

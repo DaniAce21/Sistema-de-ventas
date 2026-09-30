@@ -1,0 +1,40 @@
+/* ============================================================
+   ESTADO VACÍO
+   ============================================================ */
+
+.vacio {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: var(--superficie);
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+}
+
+.vacio__icono {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background: #f3efff;
+}
+
+.vacio h3 {
+  font-size: 1.2rem;
+}
+
+.vacio p {
+  margin: 0 auto;
+  max-width: 420px;
+  color: var(--texto-suave);
+}
+
+.vacio__acciones {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,63 @@
+/* ============================================================
+   PÁGINAS DE ERROR (404, 403, 500)
+   Código grande con el degradado de la marca.
+   ============================================================ */
+
+.pagina-error {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1.25rem;
+  text-align: center;
+}
+
+/* Variante fuera de layout: fondo oscuro a pantalla completa. */
+.pagina-error--completa {
+  min-height: 100vh;
+  background: var(--tinta);
+  background-image: radial-gradient(circle at 15% 0%, rgba(124, 58, 237, 0.45), transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(236, 72, 153, 0.4), transparent 45%);
+  color: #fff;
+}
+
+.pagina-error__contenido {
+  max-width: 480px;
+}
+
+.pagina-error__icono {
+  font-size: 2.6rem;
+}
+
+.pagina-error__codigo {
+  font-size: clamp(5rem, 20vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  background: var(--degradado);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pagina-error h1 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.pagina-error p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.pagina-error--completa p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pagina-error__acciones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}

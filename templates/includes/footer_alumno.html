@@ -1,0 +1,23 @@
+{% comment %}
+  FOOTER CON LOS DATOS DEL ALUMNO
+
+  Se usa con la etiqueta {% footer_alumno %} en todas las
+  plantillas HTML: portada, errores, login, API navegable,
+  Swagger y el panel /admin/.
+
+  Los datos provienen de settings.ALUMNO (config/templatetags_butaca.py).
+  Los estilos están en static/css/butaca.css (.pie-alumno).
+{% endcomment %}
+<footer class="pie-alumno" role="contentinfo">
+  <div class="pie-alumno__marca">
+    <span class="pie-alumno__logo" aria-hidden="true">🎟</span>
+    Butaca · Sistema de Venta de Entradas
+  </div>
+  <div class="pie-alumno__datos">
+    <strong>{{ alumno.nombre }}</strong>
+    <span class="pie-alumno__sep" aria-hidden="true">·</span>
+    Sección {{ alumno.seccion }}
+    <span class="pie-alumno__sep" aria-hidden="true">·</span>
+    {{ alumno.anio }}
+  </div>
+</footer>

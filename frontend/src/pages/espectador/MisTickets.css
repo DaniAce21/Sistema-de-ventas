@@ -1,0 +1,59 @@
+/* ============================================================
+   MIS TICKETS
+   Pestañas (próximos / pasados) y lista de tickets.
+   ============================================================ */
+
+.tickets {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.tickets__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ---------- Pestañas ---------- */
+
+.pestanas {
+  display: inline-flex;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  margin-bottom: 1.5rem;
+  border-radius: 999px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.pestanas button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+
+.pestanas button.activa {
+  background: var(--tinta);
+  color: #fff;
+}
+
+.pestanas__conteo {
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(127, 127, 150, 0.18);
+  font-size: 0.75rem;
+}
+
+.pestanas button.activa .pestanas__conteo {
+  background: rgba(255, 255, 255, 0.2);
+}

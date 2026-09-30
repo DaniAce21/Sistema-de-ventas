@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% comment %}
+  PORTADA DEL BACKEND  (GET /)
+
+  Punto de entrada al abrir http://127.0.0.1:8000/.
+  Presenta el sistema, los accesos por rol y un resumen de
+  los endpoints de la API con su nivel de permiso (RBAC).
+{% endcomment %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+<section class="heroe">
+  <div class="heroe__interior">
+    <span class="etiqueta">Django REST Framework · PostgreSQL · JWT</span>
+    <h1>La API que mueve<br>cada butaca.</h1>
+    <p>
+      Backend del Sistema de Venta de Entradas para eventos y conciertos:
+      catálogo, carro persistente, checkout transaccional y entradas con código único.
+    </p>
+    <div class="heroe__acciones">
+      <a class="boton boton--primario" href="http://localhost:5173/">Abrir el sitio</a>
+      <a class="boton boton--claro" href="/api/docs/">Ver documentación</a>
+    </div>
+  </div>
+</section>
+
+<main class="principal">
+
+  {# ---------- Accesos por rol ---------- #}
+  <div class="accesos">
+    <a class="tarjeta acceso" href="http://localhost:5173/">
+      <span class="acceso__icono" aria-hidden="true">🎫</span>
+      <h2>Sitio de venta</h2>
+      <p>Catálogo de eventos programados, carrito y tickets con código QR.</p>
+      <span class="acceso__rol">Público y espectadores</span>
+    </a>
+    <a class="tarjeta acceso" href="/api/docs/">
+      <span class="acceso__icono" aria-hidden="true">📘</span>
+      <h2>Documentación OpenAPI</h2>
+      <p>Swagger generado con drf-spectacular. Requiere iniciar sesión.</p>
+      <span class="acceso__rol">Solo administradores</span>
+    </a>
+    <a class="tarjeta acceso" href="/admin/">
+      <span class="acceso__icono" aria-hidden="true">🛠</span>
+      <h2>Panel Django</h2>
+      <p>Gestión de usuarios, roles, recintos, eventos, compras y entradas.</p>
+      <span class="acceso__rol">Superusuario</span>
+    </a>
+  </div>
+
+  {# ---------- Endpoints principales ---------- #}
+  <h2 class="seccion-titulo">Endpoints principales</h2>
+  <div class="tarjeta tabla-contenedor">
+    <table class="tabla">
+      <thead>
+        <tr><th>Método</th><th>Ruta</th><th>Descripción</th><th>Acceso</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="metodo metodo--post">POST</span></td>
+          <td><code>/api/auth/token/</code></td>
+          <td>Login: devuelve access y refresh con el claim <code>rol</code></td>
+          <td><span class="rol rol--publico">Público</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--post">POST</span></td>
+          <td><code>/api/auth/registro/</code></td>
+          <td>Crea una cuenta de espectador</td>
+          <td><span class="rol rol--publico">Público</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--get">GET</span></td>
+          <td><code>/api/eventos/</code></td>
+          <td>Catálogo con filtros django-filter, búsqueda y orden</td>
+          <td><span class="rol rol--publico">Público</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--get">GET</span></td>
+          <td><code>/api/carro-tickets/</code></td>
+          <td>Carro persistente en PostgreSQL (también POST y DELETE)</td>
+          <td><span class="rol rol--espectador">Espectador</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--post">POST</span></td>
+          <td><code>/api/compras/pagar/</code></td>
+          <td>Checkout atómico: valida y descuenta stock, genera entradas UUID</td>
+          <td><span class="rol rol--espectador">Espectador</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--get">GET</span></td>
+          <td><code>/api/mis-entradas/</code></td>
+          <td>Entradas del usuario autenticado</td>
+          <td><span class="rol rol--espectador">Espectador</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--patch">PATCH</span></td>
+          <td><code>/api/compras/{id}/estado/</code></td>
+          <td>Cambio de estado; CANCELADO repone el stock</td>
+          <td><span class="rol rol--admin">Administrador</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--patch">PATCH</span></td>
+          <td><code>/api/eventos/sectores/{id}/</code></td>
+          <td>Gestión de inventario: precio y stock del sector</td>
+          <td><span class="rol rol--admin">Administrador</span></td>
+        </tr>
+        <tr>
+          <td><span class="metodo metodo--get">GET</span></td>
+          <td><code>/api/compras/resumen/</code></td>
+          <td>Métricas de ventas del dashboard</td>
+          <td><span class="rol rol--admin">Administrador</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

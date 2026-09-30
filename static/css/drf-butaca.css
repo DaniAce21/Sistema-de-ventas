@@ -1,0 +1,124 @@
+/* ============================================================
+   API NAVEGABLE DE DRF · TEMA BUTACA
+
+   Ajusta los estilos de Bootstrap que usa la plantilla de DRF
+   (rest_framework/base.html) a los colores de la marca.
+   Los selectores siguen las clases que genera DRF.
+   ============================================================ */
+
+body {
+  font-family: var(--fuente);
+  background: var(--fondo);
+  color: var(--texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  flex: 1;
+}
+
+/* ---------- Barra superior ---------- */
+
+.navbar-inverse {
+  background: var(--tinta);
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-inverse .navbar-brand.marca {
+  display: inline-flex;
+  height: auto;
+  padding: 0.7rem 0;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > li > a:hover {
+  background: var(--tinta-2);
+  color: #fff;
+}
+
+/* ---------- Migas de pan ---------- */
+
+.breadcrumb {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  margin-top: 1.25rem;
+}
+
+.breadcrumb > .active {
+  color: var(--texto-suave);
+}
+
+/* ---------- Contenido ---------- */
+
+.content-main h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.request-info,
+.response-info pre,
+.prettyprint {
+  border-radius: var(--radio) !important;
+  border: 1px solid var(--borde) !important;
+  background: var(--superficie) !important;
+}
+
+.response-info pre {
+  font-size: 0.85rem;
+}
+
+/* Colores del JSON (google-code-prettify). */
+.prettyprint .str { color: #047857; }
+.prettyprint .lit { color: #6d28d9; }
+.prettyprint .pun, .prettyprint .pln { color: var(--texto); }
+.prettyprint .atn, .prettyprint .kwd { color: #be185d; }
+
+/* ---------- Botones ---------- */
+
+.btn-primary {
+  background: var(--degradado);
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--violeta);
+}
+
+.btn-default {
+  border-radius: 999px;
+}
+
+.btn-danger {
+  border-radius: 999px;
+}
+
+/* ---------- Formularios ---------- */
+
+.well {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.nav-tabs > li.active > a {
+  font-weight: 700;
+  color: var(--violeta);
+}
+
+.form-control:focus {
+  border-color: var(--violeta-claro);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}

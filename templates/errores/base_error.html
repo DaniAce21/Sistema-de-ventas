@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% comment %}
+  BASE DE LAS PÁGINAS DE ERROR
+
+  Django busca automáticamente 400.html, 403.html, 404.html,
+  500.html y 403_csrf.html en la raíz de templates/ cuando
+  DEBUG=False. Cada una extiende esta plantilla y define:
+
+    codigo     Número grande del error.
+    icono      Emoji ilustrativo.
+    mensaje    Título del error.
+    detalle    Explicación para el usuario.
+    acciones   Botones (por defecto: volver al inicio y al sitio).
+
+  Con DEBUG=True Django muestra su página técnica en lugar de estas.
+{% endcomment %}
+
+{% block contenido %}
+<main class="error">
+  <div>
+    <div class="error__icono" aria-hidden="true">{% block icono %}🎟{% endblock %}</div>
+    <div class="error__codigo">{% block codigo %}{% endblock %}</div>
+    <h1>{% block mensaje %}{% endblock %}</h1>
+    <p>{% block detalle %}{% endblock %}</p>
+
+    <div class="error__acciones">
+      {% block acciones %}
+        <a class="boton boton--primario" href="http://localhost:5173/">Ir al sitio de venta</a>
+        <a class="boton boton--secundario" href="/">Inicio de la API</a>
+      {% endblock %}
+    </div>
+
+    {% block extra %}{% endblock %}
+  </div>
+</main>
+{% endblock %}

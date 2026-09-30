@@ -1,0 +1,36 @@
+{% extends "rest_framework/base.html" %}
+{% load static %}
+{% comment %}
+  API NAVEGABLE DE DRF CON LA IDENTIDAD DE BUTACA
+
+  Se muestra al abrir un endpoint de la API desde el navegador
+  (por ejemplo http://127.0.0.1:8000/api/eventos/).
+
+  - style:           conserva los estilos de DRF ({{ block.super }}) y
+                     carga los nuestros después, para que prevalezcan.
+  - branding:        logo y nombre del sistema en la barra superior.
+  - script:          agrega el footer con los datos del alumno al
+                     final del <body> (último bloque de la plantilla).
+{% endcomment %}
+
+{% block title %}{% if name %}{{ name }} · {% endif %}Butaca API{% endblock %}
+
+{% block style %}
+  {{ block.super }}
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/butaca.css' %}">
+  <link rel="stylesheet" href="{% static 'css/drf-butaca.css' %}">
+{% endblock %}
+
+{% block branding %}
+  <a class="navbar-brand marca" rel="nofollow" href="/">
+    <span class="marca__icono" aria-hidden="true">🎟</span>
+    <span>Butaca <small>API navegable</small></span>
+  </a>
+{% endblock %}
+
+{% block script %}
+  {{ block.super }}
+  {% footer_alumno %}
+{% endblock %}

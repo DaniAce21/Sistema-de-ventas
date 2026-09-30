@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% comment %}
+  LOGIN DE ADMINISTRADORES  (/api-auth/login/)
+
+  Reemplaza la plantilla de DRF. Es la página a la que se
+  redirige al abrir /api/docs/ sin sesión iniciada.
+
+  La vista es LoginView de Django (incluida por rest_framework.urls),
+  que entrega al contexto:
+    form   Formulario de autenticación con sus errores.
+    next   URL a la que volver tras iniciar sesión (/api/docs/).
+
+  Solo un ORGANIZADOR o superusuario podrá ver la documentación
+  después de entrar (permiso IsGestor); un espectador verá 403.
+{% endcomment %}
+
+{% block titulo %}Acceso administradores{% endblock %}
+
+{% block contenido %}
+<main class="acceso-login">
+
+  <section class="heroe">
+    <div class="heroe__interior">
+      <span class="etiqueta">Zona de administración</span>
+      <h1>Documentación<br>de la API</h1>
+      <p>
+        Inicia sesión con una cuenta de administrador para explorar y
+        probar los endpoints en Swagger.
+      </p>
+    </div>
+  </section>
+
+  <section class="acceso-login__formulario">
+    <form class="tarjeta" method="post" action="{% url 'rest_framework:login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next|default:'/api/docs/' }}">
+
+      <h2>Iniciar sesión</h2>
+      <p class="subtitulo">Acceso exclusivo para administradores.</p>
+
+      {% if form.non_field_errors %}
+        <div class="alerta alerta--error" role="alert">
+          {% for error in form.non_field_errors %}{{ error }}{% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="campo">
+        <label for="id_username">Usuario</label>
+        <input type="text" name="username" id="id_username" required autofocus
+               autocomplete="username" autocapitalize="off"
+               value="{{ form.username.value|default:'' }}">
+      </div>
+
+      <div class="campo">
+        <label for="id_password">Contraseña</label>
+        <input type="password" name="password" id="id_password" required
+               autocomplete="current-password">
+      </div>
+
+      <button type="submit" class="boton boton--primario boton--bloque">Entrar</button>
+
+      <p class="alerta alerta--info" style="margin: 1.25rem 0 0;">
+        ¿Eres espectador? Compra y revisa tus tickets en
+        <a href="http://localhost:5173/">el sitio de venta</a>.
+      </p>
+    </form>
+  </section>
+
+</main>
+{% endblock %}

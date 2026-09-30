@@ -1,0 +1,124 @@
+/* ============================================================
+   FOOTER
+   Versión completa (espectador) y compacta (administrador).
+   Ambas muestran los datos del alumno.
+   ============================================================ */
+
+.footer {
+  margin-top: auto;
+  background: var(--tinta);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer__marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.footer__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--degradado);
+  font-size: 1rem;
+}
+
+.footer__lema,
+.footer__texto {
+  margin: 0.75rem 0 0;
+  max-width: 320px;
+}
+
+.footer h4 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+/* ---------- Franja inferior con datos del alumno ---------- */
+
+.footer__base {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__base-interior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.82rem;
+}
+
+.footer__alumno {
+  margin: 0;
+}
+
+.footer__alumno strong {
+  color: #fff;
+}
+
+/* ---------- Variante compacta (panel admin) ---------- */
+
+.footer--compacto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.82rem;
+}
+
+.footer__marca-chica {
+  font-weight: 700;
+  color: #fff;
+}

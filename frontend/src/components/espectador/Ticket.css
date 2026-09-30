@@ -1,0 +1,152 @@
+/* ============================================================
+   TICKET DIGITAL
+   Afiche + datos del evento + talón con QR y UUID.
+   Las muescas laterales imitan un ticket físico troquelado.
+   ============================================================ */
+
+.ticket {
+  display: grid;
+  grid-template-columns: 170px 1fr 220px;
+  background: var(--superficie);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.ticket--usado {
+  filter: grayscale(0.85);
+  opacity: 0.7;
+}
+
+.ticket__afiche {
+  min-height: 100%;
+}
+
+/* ---------- Datos ---------- */
+
+.ticket__cuerpo {
+  padding: 1.4rem 1.5rem;
+}
+
+.ticket__etiqueta,
+.ticket__datos dt {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+.ticket__evento {
+  margin: 0.15rem 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.ticket__datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+}
+
+.ticket__datos dd {
+  margin: 0.1rem 0 0;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* ---------- Talón ---------- */
+
+.ticket__talon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  background: var(--superficie-2);
+  border-left: 2px dashed var(--borde);
+}
+
+/* Muescas semicirculares arriba y abajo de la línea punteada. */
+.ticket__talon::before,
+.ticket__talon::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--fondo);
+}
+
+.ticket__talon::before {
+  top: -11px;
+}
+
+.ticket__talon::after {
+  bottom: -11px;
+}
+
+.ticket__qr {
+  padding: 8px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(18, 15, 36, 0.08);
+}
+
+.ticket__qr svg {
+  display: block;
+}
+
+.ticket__uuid {
+  max-width: 100%;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.66rem;
+  text-align: center;
+  word-break: break-all;
+  color: var(--texto-suave);
+}
+
+.ticket__compra {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+/* ---------- Pantallas angostas: se apila en vertical ---------- */
+
+@media (max-width: 760px) {
+  .ticket {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket__afiche {
+    aspect-ratio: 16 / 7;
+  }
+
+  .ticket__talon {
+    border-left: none;
+    border-top: 2px dashed var(--borde);
+  }
+
+  .ticket__talon::before,
+  .ticket__talon::after {
+    top: -12px;
+    left: auto;
+    bottom: auto;
+  }
+
+  .ticket__talon::before {
+    left: -11px;
+  }
+
+  .ticket__talon::after {
+    right: -11px;
+  }
+}

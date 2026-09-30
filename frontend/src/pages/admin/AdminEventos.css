@@ -1,0 +1,67 @@
+/* ============================================================
+   LISTADO DE EVENTOS (ADMIN)
+   ============================================================ */
+
+.admin-eventos__filtros {
+  margin-bottom: 1.25rem;
+}
+
+.admin-eventos__filtros input[type="search"] {
+  flex: 1;
+  min-width: 240px;
+}
+
+.admin-eventos__evento {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 220px;
+}
+
+.admin-eventos__miniatura {
+  flex-shrink: 0;
+  width: 64px;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* El afiche de respaldo es muy chico para mostrar el nombre. */
+.admin-eventos__miniatura .afiche__nombre {
+  display: none;
+}
+
+.admin-eventos__miniatura .afiche__icono {
+  font-size: 1.4rem;
+  transform: translate(-50%, -50%);
+}
+
+.admin-eventos__nombre {
+  display: block;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.admin-eventos__nombre:hover {
+  color: var(--violeta);
+}
+
+.admin-eventos__recinto {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.admin-eventos__fecha {
+  white-space: nowrap;
+}
+
+.admin-eventos__agotado {
+  font-weight: 700;
+  color: var(--peligro);
+}
+
+.admin-eventos__acciones {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}

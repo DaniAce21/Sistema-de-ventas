@@ -1,0 +1,237 @@
+/* ============================================================
+   CABECERA DEL ESPECTADOR
+   Barra oscura fija arriba (sticky) con logo, buscador y menú.
+   ============================================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(18, 15, 36, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header__interior {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 68px;
+  flex-wrap: wrap;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.header__marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.header__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+  background: var(--degradado);
+  box-shadow: 0 6px 16px rgba(192, 38, 211, 0.35);
+}
+
+/* ---------- Buscador ---------- */
+
+.header__buscador {
+  flex: 1;
+  min-width: 220px;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.header__buscador:focus-within {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(139, 92, 246, 0.8);
+}
+
+.header__buscador input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.header__buscador input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Navegación ---------- */
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-left: auto;
+}
+
+.header__link {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.header__link:hover {
+  color: #fff;
+}
+
+.header__link.active {
+  color: #fff;
+  border-bottom-color: var(--rosa);
+}
+
+/* ---------- Carrito con contador ---------- */
+
+.header__carrito {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.header__carrito.active {
+  background: rgba(236, 72, 153, 0.25);
+}
+
+.header__contador {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--rosa);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  border: 2px solid var(--tinta);
+}
+
+/* ---------- Menú de usuario ---------- */
+
+.header__usuario {
+  position: relative;
+}
+
+.header__avatar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.8rem 0.25rem 0.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.header__iniciales {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--degradado);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.header__menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: 220px;
+  padding: 0.4rem;
+  border-radius: 14px;
+  background: var(--superficie);
+  box-shadow: var(--sombra-alta);
+  display: flex;
+  flex-direction: column;
+}
+
+.header__menu-cabecera {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0.75rem 0.7rem;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.header__menu-cabecera span {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+.header__menu a,
+.header__menu button {
+  padding: 0.6rem 0.75rem;
+  border-radius: 9px;
+  border: none;
+  background: none;
+  text-align: left;
+  color: var(--texto);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header__menu a:hover,
+.header__menu button:hover {
+  background: #f5f3ff;
+}
+
+/* ---------- Pantallas angostas ---------- */
+
+@media (max-width: 760px) {
+  .header__buscador {
+    order: 3;
+    max-width: none;
+    flex-basis: 100%;
+  }
+
+  .header__nombre {
+    display: none;
+  }
+
+  .header__avatar {
+    padding-right: 0.25rem;
+  }
+}

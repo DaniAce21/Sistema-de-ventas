@@ -1,0 +1,40 @@
+/* ============================================================
+   SELECTOR DE CANTIDAD (− 2 +)
+   ============================================================ */
+
+.cantidad {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--superficie);
+  overflow: hidden;
+}
+
+.cantidad button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--violeta);
+  cursor: pointer;
+}
+
+.cantidad button:hover:not(:disabled) {
+  background: #f3efff;
+}
+
+.cantidad button:disabled {
+  color: var(--texto-tenue);
+  cursor: not-allowed;
+}
+
+.cantidad output {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}

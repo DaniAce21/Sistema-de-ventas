@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% comment %}
+  PANEL /admin/ CON LA IDENTIDAD DE BUTACA
+
+  Extiende la plantilla original del admin de Django (mismo nombre:
+  Django busca la original en el siguiente directorio de plantillas).
+  Todas las páginas del admin la heredan, incluido el login.
+
+  Bloques redefinidos:
+    extrastyle      Tipografía y static/css/admin-butaca.css.
+    dark-mode-vars  Vacío: desactiva el modo oscuro del admin para
+                    que los colores de la marca sean consistentes.
+    branding        Logo y nombre del sistema.
+    userlinks       Agrega acceso a la documentación de la API.
+    footer          Datos del alumno.
+{% endcomment %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/butaca.css' %}">
+  <link rel="stylesheet" href="{% static 'css/admin-butaca.css' %}">
+{% endblock %}
+
+{% block dark-mode-vars %}{% endblock %}
+
+{% block branding %}
+  <div id="site-name">
+    <a href="{% url 'admin:index' %}" class="marca">
+      <span class="marca__icono" aria-hidden="true">🎟</span>
+      <span>Butaca <small>Administración</small></span>
+    </a>
+  </div>
+{% endblock %}
+
+{% block userlinks %}
+  <a href="/api/docs/">Documentación API</a> /
+  <a href="http://localhost:5173/">Sitio de venta</a> /
+  {{ block.super }}
+{% endblock %}
+
+{% block footer %}
+  {% footer_alumno %}
+{% endblock %}

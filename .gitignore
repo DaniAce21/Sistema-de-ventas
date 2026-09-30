@@ -1,0 +1,23 @@
+# Entorno virtual de Python
+venv/
+.venv/
+
+# Variables sensibles (contraseña de PostgreSQL, SECRET_KEY)
+.env
+
+# Afiches subidos por los administradores (MEDIA_ROOT)
+media/
+
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+
+# Frontend: dependencias y build
+frontend/node_modules/
+frontend/dist/
+
+# Editor / sistema operativo
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,80 @@
+/* ============================================================
+   CARGANDO
+   Spinner circular y tarjetas "esqueleto" con brillo animado.
+   ============================================================ */
+
+.cargando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 4rem 1rem;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.cargando__spinner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 4px solid #ede9fe;
+  border-top-color: var(--violeta);
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Esqueleto del catálogo ---------- */
+
+.esqueleto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.esqueleto-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.esqueleto {
+  border-radius: var(--radio-chico);
+  background: linear-gradient(90deg, #ecebf3 25%, #f6f5fb 50%, #ecebf3 75%);
+  background-size: 200% 100%;
+  animation: brillo 1.3s ease-in-out infinite;
+}
+
+.esqueleto--imagen {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radio);
+}
+
+.esqueleto--linea {
+  height: 14px;
+}
+
+.esqueleto--linea.corta {
+  width: 60%;
+}
+
+@keyframes brillo {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Quien prefiere menos movimiento no ve animaciones. */
+@media (prefers-reduced-motion: reduce) {
+  .cargando__spinner,
+  .esqueleto {
+    animation: none;
+  }
+}

@@ -1,0 +1,68 @@
+{% extends "drf_spectacular/swagger_ui.html" %}
+{% load static %}
+{% comment %}
+  SWAGGER UI CON LA IDENTIDAD DE BUTACA  (/api/docs/)
+
+  Extiende la plantilla original de drf-spectacular.
+  Django permite extender una plantilla con el mismo nombre:
+  busca la original en el siguiente directorio de plantillas.
+
+  - head: conserva los estilos de Swagger ({{ block.super }})
+          y agrega los nuestros (static/css/swagger-butaca.css).
+  - body: cabecera con el usuario y botón de salir, el Swagger
+          original y el footer con los datos del alumno.
+
+  Solo llegan aquí usuarios ORGANIZADOR o superusuarios
+  (permiso IsGestor en config/views.py).
+{% endcomment %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/butaca.css' %}">
+  <link rel="stylesheet" href="{% static 'css/swagger-butaca.css' %}">
+{% endblock head %}
+
+{% block body %}
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <a class="marca" href="/">
+        <span class="marca__icono" aria-hidden="true">🎟</span>
+        <span>Butaca <small>Documentación API</small></span>
+      </a>
+      <nav class="cabecera__nav" aria-label="Documentación">
+        <a href="/api/schema/" download>Descargar esquema</a>
+        <a href="/admin/">Admin</a>
+        <a href="http://localhost:5173/panel">Panel web</a>
+        {% if request.user.is_authenticated %}
+          <span class="docs-usuario">
+            {{ request.user.username }}
+            <small>{% if request.user.is_superuser %}Superusuario{% else %}{{ request.user.get_rol_display }}{% endif %}</small>
+          </span>
+          {# Django 5 exige POST para cerrar sesión (protección CSRF). #}
+          <form method="post" action="{% url 'rest_framework:logout' %}" class="docs-salir">
+            {% csrf_token %}
+            <button type="submit" class="boton boton--claro">Salir</button>
+          </form>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <section class="docs-intro">
+    <div class="docs-intro__interior">
+      <h1>Referencia de la API</h1>
+      <p>
+        Usa <strong>Authorize</strong> e ingresa <code>Bearer &lt;access token&gt;</code>
+        obtenido en <code>POST /api/auth/token/</code> para probar los endpoints protegidos.
+      </p>
+    </div>
+  </section>
+
+  <main class="docs-contenido">
+    {{ block.super }}
+  </main>
+
+  {% footer_alumno %}
+{% endblock %}

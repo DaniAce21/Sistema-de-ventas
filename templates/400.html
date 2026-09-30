@@ -1,0 +1,13 @@
+{% extends "errores/base_error.html" %}
+{% comment %}
+  ERROR 400 — La solicitud está mal formada.
+{% endcomment %}
+
+{% block titulo %}Solicitud incorrecta{% endblock %}
+{% block icono %}⚠️{% endblock %}
+{% block codigo %}400{% endblock %}
+{% block mensaje %}Solicitud incorrecta{% endblock %}
+{% block detalle %}
+  El servidor no pudo entender la solicitud.
+  Revisa los datos enviados e inténtalo nuevamente.
+{% endblock %}

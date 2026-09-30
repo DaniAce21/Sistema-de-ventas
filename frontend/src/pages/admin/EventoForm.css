@@ -1,0 +1,162 @@
+/* ============================================================
+   FORMULARIO DE EVENTO (ADMIN)
+   Datos a la izquierda, afiche y botón de guardar a la derecha,
+   y debajo la gestión de sectores / inventario.
+   ============================================================ */
+
+.evento-form__volver {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.evento-form__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .evento-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.evento-form h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.evento-form__lateral {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ---------- Afiche ---------- */
+
+.evento-form__previa {
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.evento-form__archivo {
+  position: relative;
+}
+
+.evento-form__ayuda {
+  display: block;
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* ---------- Recinto nuevo ---------- */
+
+.evento-form__enlace {
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--violeta);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.evento-form__recinto {
+  padding: 1rem 1rem 0.25rem;
+  border-radius: 12px;
+  background: var(--superficie-2);
+  border: 1px dashed var(--borde);
+}
+
+.evento-form__recinto-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Sectores ---------- */
+
+.evento-form__sectores {
+  margin-top: 1.5rem;
+}
+
+.evento-form__seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.evento-form__seccion-cabecera h2 {
+  margin-bottom: 0.25rem;
+}
+
+.evento-form__seccion-cabecera p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.evento-form__stock-total {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: #f3efff;
+  color: var(--violeta);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.evento-form__tabla {
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+}
+
+.evento-form__celda {
+  max-width: 150px;
+  padding: 0.5rem 0.7rem;
+}
+
+.evento-form__acciones-fila {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.evento-form__nuevo-sector h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.evento-form__nuevo-campos {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 0 0.75rem;
+  align-items: end;
+}
+
+.evento-form__nuevo-campos .btn {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .evento-form__nuevo-campos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .evento-form__nuevo-campos .campo:first-child {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,16 @@
+{% extends "errores/base_error.html" %}
+{% comment %}
+  ERROR 500 — Error interno del servidor.
+
+  Django renderiza esta página SIN contexto de request, por eso
+  el footer usa la etiqueta {% footer_alumno %} (lee settings
+  directamente) y no depende de context processors.
+{% endcomment %}
+
+{% block titulo %}Error del servidor{% endblock %}
+{% block icono %}🛠{% endblock %}
+{% block codigo %}500{% endblock %}
+{% block mensaje %}Algo salió mal de nuestro lado{% endblock %}
+{% block detalle %}
+  Ocurrió un error inesperado. Ya quedó registrado; por favor intenta nuevamente en unos minutos.
+{% endblock %}

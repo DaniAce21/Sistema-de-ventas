@@ -1,0 +1,25 @@
+{% extends "errores/base_error.html" %}
+{% comment %}
+  ERROR 403 CSRF — Falló la verificación del token CSRF.
+
+  Ocurre al enviar un formulario (por ejemplo, el login de la API)
+  con una sesión vencida o desde otra pestaña. Django pasa la
+  causa técnica en la variable "reason".
+{% endcomment %}
+
+{% block titulo %}Sesión expirada{% endblock %}
+{% block icono %}⏱{% endblock %}
+{% block codigo %}403{% endblock %}
+{% block mensaje %}El formulario expiró{% endblock %}
+{% block detalle %}
+  Por seguridad, el formulario dejó de ser válido. Recarga la página e inténtalo otra vez.
+{% endblock %}
+
+{% block acciones %}
+  <a class="boton boton--primario" href="javascript:history.back()">Volver e intentar de nuevo</a>
+  <a class="boton boton--secundario" href="/">Inicio de la API</a>
+{% endblock %}
+
+{% block extra %}
+  {% if reason %}<p class="error__detalle">Detalle técnico: {{ reason }}</p>{% endif %}
+{% endblock %}

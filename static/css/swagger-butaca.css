@@ -1,0 +1,160 @@
+/* ============================================================
+   SWAGGER UI · TEMA BUTACA
+
+   Personaliza la interfaz de Swagger UI (drf-spectacular) con
+   los colores y tipografía de la marca. Los selectores siguen
+   las clases que genera Swagger UI (.swagger-ui ...).
+   ============================================================ */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--fondo) !important;
+  font-family: var(--fuente);
+}
+
+/* ---------- Cabecera propia ---------- */
+
+.docs-usuario {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.1;
+}
+
+.docs-usuario small {
+  font-weight: 500;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.docs-salir {
+  margin: 0;
+}
+
+.docs-salir .boton {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+}
+
+.docs-intro {
+  background: var(--tinta);
+  background-image: radial-gradient(circle at 15% -40%, rgba(124, 58, 237, 0.6), transparent 55%),
+    radial-gradient(circle at 90% 140%, rgba(236, 72, 153, 0.5), transparent 50%);
+  color: #fff;
+}
+
+.docs-intro__interior {
+  max-width: 1460px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.25rem;
+}
+
+.docs-intro h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+}
+
+.docs-intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.docs-intro code {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+}
+
+.docs-contenido {
+  flex: 1;
+}
+
+/* ---------- Swagger UI ---------- */
+
+/* Ocultamos la barra propia de Swagger: usamos nuestra cabecera. */
+.swagger-ui .topbar {
+  display: none;
+}
+
+.swagger-ui,
+.swagger-ui .info .title,
+.swagger-ui .opblock-tag,
+.swagger-ui .opblock .opblock-summary-description,
+.swagger-ui .btn,
+.swagger-ui select,
+.swagger-ui input {
+  font-family: var(--fuente) !important;
+}
+
+.swagger-ui .info {
+  margin: 1.5rem 0;
+}
+
+.swagger-ui .info .title {
+  color: var(--texto);
+  font-weight: 800;
+}
+
+.swagger-ui .scheme-container {
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+  border-radius: var(--radio);
+  margin: 0 0 1.5rem;
+}
+
+/* Grupos de endpoints (eventos, carro-tickets, compras...). */
+.swagger-ui .opblock-tag {
+  border-bottom: 1px solid var(--borde);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.swagger-ui .opblock {
+  border-radius: 12px;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.swagger-ui .opblock .opblock-summary-method {
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+/* Botón "Authorize" y botones principales con el degradado de la marca. */
+.swagger-ui .btn.authorize,
+.swagger-ui .btn.execute {
+  background: var(--degradado);
+  border: none;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.swagger-ui .btn.authorize svg {
+  fill: #fff;
+}
+
+.swagger-ui .btn {
+  border-radius: 999px;
+}
+
+.swagger-ui .dialog-ux .modal-ux {
+  border-radius: var(--radio);
+  border: none;
+}
+
+.swagger-ui .dialog-ux .modal-ux-header h3 {
+  font-weight: 800;
+}
+
+.swagger-ui a.nostyle,
+.swagger-ui .info a {
+  color: var(--violeta);
+}

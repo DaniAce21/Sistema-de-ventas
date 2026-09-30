@@ -1,0 +1,103 @@
+/* ============================================================
+   DOCUMENTACIÓN (SWAGGER UI DENTRO DEL PANEL)
+   Mismos ajustes de marca que static/css/swagger-butaca.css
+   del backend, limitados a .documentacion__swagger.
+   ============================================================ */
+
+.documentacion__intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 1.75rem 2rem;
+  border-radius: 20px;
+  color: #fff;
+  background: var(--tinta);
+  background-image: radial-gradient(circle at 5% -40%, rgba(124, 58, 237, 0.7), transparent 55%),
+    radial-gradient(circle at 95% 150%, rgba(236, 72, 153, 0.55), transparent 50%);
+}
+
+.documentacion__intro h2 {
+  margin: 0.4rem 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.documentacion__intro p {
+  margin: 0;
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+}
+
+.documentacion__etiqueta {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f9a8d4;
+}
+
+.documentacion__swagger {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+/* El contenedor vacío (mientras carga) no ocupa espacio. */
+.documentacion__swagger:empty {
+  display: none;
+}
+
+/* ---------- Ajustes de Swagger UI ---------- */
+
+.documentacion__swagger .swagger-ui,
+.documentacion__swagger .swagger-ui .info .title,
+.documentacion__swagger .swagger-ui .opblock-tag,
+.documentacion__swagger .swagger-ui .btn,
+.documentacion__swagger .swagger-ui select,
+.documentacion__swagger .swagger-ui input {
+  font-family: var(--fuente);
+}
+
+/* El título ya está en la cabecera de la página. */
+.documentacion__swagger .swagger-ui .info {
+  margin: 1rem 0;
+}
+
+.documentacion__swagger .swagger-ui .scheme-container {
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.documentacion__swagger .swagger-ui .opblock-tag {
+  font-weight: 800;
+  border-bottom-color: var(--borde);
+}
+
+.documentacion__swagger .swagger-ui .opblock {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.documentacion__swagger .swagger-ui .opblock .opblock-summary-method {
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.documentacion__swagger .swagger-ui .btn {
+  border-radius: 999px;
+}
+
+.documentacion__swagger .swagger-ui .btn.execute,
+.documentacion__swagger .swagger-ui .btn.authorize {
+  background: var(--degradado);
+  border: none;
+  color: #fff;
+}
+
+.documentacion__swagger .swagger-ui .btn.authorize svg {
+  fill: #fff;
+}

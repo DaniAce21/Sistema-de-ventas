@@ -1,0 +1,40 @@
+/* ============================================================
+   MODAL DE CONFIRMACIÓN
+   ============================================================ */
+
+.modal {
+  width: min(440px, calc(100vw - 2rem));
+  padding: 1.75rem;
+  border: none;
+  border-radius: 20px;
+  box-shadow: var(--sombra-alta);
+  color: var(--texto);
+}
+
+/* Fondo oscurecido detrás del diálogo. */
+.modal::backdrop {
+  background: rgba(18, 15, 36, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.modal__titulo {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.modal__cuerpo {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.modal__cuerpo p {
+  margin: 0 0 0.5rem;
+}
+
+.modal__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}

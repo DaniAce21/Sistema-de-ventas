@@ -1,0 +1,263 @@
+/* ============================================================
+   PANEL /admin/ · TEMA BUTACA
+
+   El admin de Django define sus colores con variables CSS
+   (--primary, --header-bg, --button-bg, ...). Redefinirlas
+   cambia el tema completo sin tocar sus plantillas internas.
+   ============================================================ */
+
+:root {
+  --primary: #8b5cf6;
+  --secondary: #6d28d9;
+  --accent: #f9a8d4;
+  --primary-fg: #fff;
+
+  --body-fg: #18162b;
+  --body-bg: #f6f5fb;
+  --body-quiet-color: #6b6880;
+  --body-medium-color: #3f3c55;
+  --body-loud-color: #120f24;
+
+  --header-color: #fff;
+  --header-branding-color: #fff;
+  --header-bg: #120f24;
+  --header-link-color: #fff;
+
+  --breadcrumbs-fg: #c4b5fd;
+  --breadcrumbs-link-fg: #fff;
+  --breadcrumbs-bg: #1d1938;
+
+  --link-fg: #6d28d9;
+  --link-hover-color: #c026d3;
+  --link-selected-fg: #6d28d9;
+
+  --hairline-color: #ece9f5;
+  --border-color: #e5e3ef;
+
+  --darkened-bg: #faf9fe;
+  --selected-bg: #ede9fe;
+  --selected-row: #f5f3ff;
+
+  --button-fg: #fff;
+  --button-bg: #6d28d9;
+  --button-hover-bg: #5b21b6;
+  --default-button-bg: #c026d3;
+  --default-button-hover-bg: #a21caf;
+  --close-button-bg: #6b6880;
+  --close-button-hover-bg: #3f3c55;
+  --delete-button-bg: #dc2626;
+  --delete-button-hover-bg: #b91c1c;
+
+  --object-tools-bg: #6d28d9;
+  --object-tools-hover-bg: #5b21b6;
+
+  --message-success-bg: #dcfce7;
+  --message-warning-bg: #fef3c7;
+  --message-error-bg: #fee2e2;
+
+  --font-family-primary: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: var(--body-bg);
+}
+
+/* El botón de modo oscuro no aplica: el tema es fijo. */
+.theme-toggle {
+  display: none !important;
+}
+
+/* ---------- Cabecera ---------- */
+
+#header {
+  padding: 12px 32px;
+  background: var(--header-bg);
+  background-image: radial-gradient(circle at 0% -80%, rgba(124, 58, 237, 0.55), transparent 45%),
+    radial-gradient(circle at 100% 180%, rgba(236, 72, 153, 0.45), transparent 45%);
+}
+
+#site-name .marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+#site-name .marca small {
+  font-weight: 500;
+  font-size: 0.75rem;
+  opacity: 0.65;
+}
+
+#user-tools {
+  font-weight: 500;
+}
+
+#user-tools a,
+#logout-form button {
+  border-bottom: none;
+  opacity: 0.85;
+}
+
+#user-tools a:hover,
+#logout-form button:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #f9a8d4;
+}
+
+div.breadcrumbs {
+  padding: 10px 32px;
+}
+
+/* ---------- Tarjetas de módulos y tablas ---------- */
+
+.module {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(18, 15, 36, 0.06), 0 8px 24px rgba(18, 15, 36, 0.05);
+  background: #fff;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: #1d1938;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#content h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#changelist-filter {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+#changelist-filter h2 {
+  background: #1d1938;
+}
+
+/* ---------- Botones ---------- */
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  border-radius: 999px !important;
+  font-weight: 700;
+}
+
+.submit-row input.default,
+input[type="submit"].default {
+  background: linear-gradient(120deg, #6d28d9 0%, #c026d3 55%, #ec4899 100%);
+}
+
+.object-tools a {
+  border-radius: 999px;
+}
+
+/* ---------- Bienvenida (templates/admin/index.html) ---------- */
+
+.bienvenida {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 28px 32px;
+  border-radius: 18px;
+  color: #fff;
+  background: #120f24;
+  background-image: radial-gradient(circle at 10% -60%, rgba(124, 58, 237, 0.7), transparent 55%),
+    radial-gradient(circle at 95% 160%, rgba(236, 72, 153, 0.6), transparent 50%);
+}
+
+.bienvenida h2 {
+  margin: 6px 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  background: none;
+  padding: 0;
+}
+
+.bienvenida p {
+  margin: 0;
+  max-width: 540px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+}
+
+.bienvenida__etiqueta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f9a8d4;
+}
+
+.bienvenida__acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bienvenida .boton {
+  font-size: 0.9rem;
+}
+
+/* ---------- Login del admin ---------- */
+
+.login #container {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(18, 15, 36, 0.18);
+}
+
+.login #header {
+  padding: 22px 28px;
+}
+
+.login #content {
+  padding: 24px 28px 28px;
+}
+
+.login .submit-row input {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+
+#footer {
+  padding: 0;
+}
+
+/* En el login el footer queda debajo de la tarjeta. */
+.login .pie-alumno {
+  margin-top: 0;
+}
+
+/* ---------- Miniatura del afiche (eventos/admin.py) ---------- */
+
+.miniatura-afiche {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.vista-afiche {
+  max-width: 320px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(18, 15, 36, 0.12);
+}

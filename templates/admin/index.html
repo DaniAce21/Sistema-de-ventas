@@ -1,0 +1,27 @@
+{% extends "admin/index.html" %}
+{% comment %}
+  PORTADA DEL PANEL /admin/
+
+  Agrega un bloque de bienvenida con accesos rápidos antes del
+  listado de modelos. {{ block.super }} conserva el contenido
+  original (aplicaciones y modelos registrados).
+{% endcomment %}
+
+{% block content %}
+  <section class="bienvenida">
+    <div>
+      <span class="bienvenida__etiqueta">Panel de gestión</span>
+      <h2>Hola, {{ user.get_short_name|default:user.username }} 👋</h2>
+      <p>
+        Administra usuarios y roles, recintos, eventos con sus sectores,
+        compras y entradas del sistema.
+      </p>
+    </div>
+    <div class="bienvenida__acciones">
+      <a class="boton boton--primario" href="/api/docs/">Documentación API</a>
+      <a class="boton boton--claro" href="http://localhost:5173/panel">Panel web</a>
+    </div>
+  </section>
+
+  {{ block.super }}
+{% endblock %}

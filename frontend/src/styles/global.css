@@ -1,0 +1,379 @@
+/* ============================================================
+   BUTACA · SISTEMA DE DISEÑO GLOBAL
+
+   Variables de color, tipografía y componentes base compartidos
+   por la vista del espectador y la del administrador.
+
+   Referencia visual: plataformas de ticketing como Passline
+   (cabecera oscura, afiches protagonistas, tarjetas limpias),
+   con identidad propia: degradado violeta → magenta → rosa.
+
+   Mismos valores que static/css/butaca.css del backend, para
+   que las páginas Django y React se vean como un solo sistema.
+   ============================================================ */
+
+:root {
+  /* ---------- Marca ---------- */
+  --tinta: #120f24;
+  --tinta-2: #1d1938;
+  --tinta-3: #2a2550;
+  --violeta: #6d28d9;
+  --violeta-claro: #8b5cf6;
+  --magenta: #c026d3;
+  --rosa: #ec4899;
+  --degradado: linear-gradient(120deg, #6d28d9 0%, #c026d3 55%, #ec4899 100%);
+
+  /* ---------- Superficies y texto ---------- */
+  --fondo: #f6f5fb;
+  --superficie: #ffffff;
+  --superficie-2: #faf9fe;
+  --texto: #18162b;
+  --texto-suave: #6b6880;
+  --texto-tenue: #9a97ad;
+  --borde: #e5e3ef;
+
+  /* ---------- Estados (reservados, siempre con etiqueta) ---------- */
+  --exito: #15803d;
+  --exito-fondo: #dcfce7;
+  --aviso: #a16207;
+  --aviso-fondo: #fef3c7;
+  --peligro: #b91c1c;
+  --peligro-fondo: #fee2e2;
+  --info: #1d4ed8;
+  --info-fondo: #dbeafe;
+  --neutro: #475569;
+  --neutro-fondo: #f1f5f9;
+
+  /* ---------- Forma ---------- */
+  --radio: 16px;
+  --radio-chico: 10px;
+  --sombra: 0 1px 2px rgba(18, 15, 36, 0.05), 0 8px 24px rgba(18, 15, 36, 0.06);
+  --sombra-alta: 0 18px 48px rgba(18, 15, 36, 0.14);
+  --fuente: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ancho: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--violeta);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* El footer queda abajo aunque la página tenga poco contenido. */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El contenido de la vista espectador empuja el footer hacia abajo. */
+.vista-espectador {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor centrado reutilizable. */
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(139, 92, 246, 0.45);
+  outline-offset: 2px;
+}
+
+.btn-primario {
+  background: var(--degradado);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(192, 38, 211, 0.28);
+}
+
+.btn-oscuro {
+  background: var(--tinta);
+  color: #fff;
+}
+
+.btn-secundario {
+  background: var(--superficie);
+  color: var(--texto);
+  border-color: var(--borde);
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background: var(--superficie-2);
+}
+
+.btn-claro {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-peligro {
+  background: var(--superficie);
+  color: var(--peligro);
+  border-color: #fecaca;
+}
+
+.btn-peligro:hover:not(:disabled) {
+  background: var(--peligro-fondo);
+}
+
+.btn-chico {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.btn-grande {
+  padding: 0.95rem 1.6rem;
+  font-size: 1.02rem;
+}
+
+.btn-bloque {
+  width: 100%;
+}
+
+/* Botón solo ícono (cerrar, menú, etc.). */
+.btn-icono {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ============================================================
+   TARJETAS
+   ============================================================ */
+
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+}
+
+/* ============================================================
+   FORMULARIOS
+   ============================================================ */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.campo label,
+.etiqueta-campo {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.campo .ayuda {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.campo .error-campo {
+  font-size: 0.8rem;
+  color: var(--peligro);
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-chico);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--superficie-2);
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--violeta-claro);
+  background: var(--superficie);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+}
+
+.input[aria-invalid="true"] {
+  border-color: #fca5a5;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.fila-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 1rem;
+}
+
+/* ============================================================
+   ALERTAS
+   ============================================================ */
+
+.alerta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radio-chico);
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.alerta-error {
+  background: var(--peligro-fondo);
+  color: #7f1d1d;
+}
+
+.alerta-exito {
+  background: var(--exito-fondo);
+  color: #14532d;
+}
+
+.alerta-info {
+  background: #f5f3ff;
+  color: #4c1d95;
+}
+
+/* ============================================================
+   BADGES DE ESTADO
+   El color nunca va solo: siempre acompaña a un texto.
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-PROGRAMADO,
+.badge-PAGADO {
+  background: var(--exito-fondo);
+  color: var(--exito);
+}
+
+.badge-PENDIENTE {
+  background: var(--aviso-fondo);
+  color: var(--aviso);
+}
+
+.badge-ENTREGADO {
+  background: var(--info-fondo);
+  color: var(--info);
+}
+
+.badge-CANCELADO {
+  background: var(--peligro-fondo);
+  color: var(--peligro);
+}
+
+.badge-FINALIZADO {
+  background: var(--neutro-fondo);
+  color: var(--neutro);
+}
+
+/* ============================================================
+   UTILIDADES DE PÁGINA
+   ============================================================ */
+
+.titulo-pagina {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+}
+
+.subtitulo {
+  color: var(--texto-suave);
+  margin: 0 0 1.75rem;
+}
+
+.texto-suave {
+  color: var(--texto-suave);
+}

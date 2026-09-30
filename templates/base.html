@@ -1,0 +1,58 @@
+{% load static %}
+{% comment %}
+  PLANTILLA BASE DE LAS PÁGINAS DJANGO
+
+  Estructura común: cabecera con la marca, contenido y footer
+  con los datos del alumno. La extienden:
+
+    inicio.html                 Portada del backend (/).
+    errores/base_error.html     Páginas 400, 403, 404, 500 y CSRF.
+    rest_framework/login.html   Login de la API (/api-auth/login/).
+
+  Bloques que pueden redefinir las plantillas hijas:
+    titulo      Texto de la pestaña del navegador.
+    cabecera    Barra superior completa.
+    nav         Enlaces de la barra superior.
+    contenido   Cuerpo de la página.
+{% endcomment %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Butaca{% endblock %} · Venta de Entradas</title>
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+
+  {# Tipografía de la marca (con respaldo del sistema si no hay internet). #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/butaca.css' %}">
+  {% block estilos %}{% endblock %}
+</head>
+<body class="butaca">
+
+  {% block cabecera %}
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <a class="marca" href="/">
+        <span class="marca__icono" aria-hidden="true">🎟</span>
+        <span>Butaca <small>API</small></span>
+      </a>
+      <nav class="cabecera__nav" aria-label="Principal">
+        {% block nav %}
+          <a href="/api/docs/">Documentación</a>
+          <a href="/admin/">Admin</a>
+          <a href="http://localhost:5173/">Ir al sitio →</a>
+        {% endblock %}
+      </nav>
+    </div>
+  </header>
+  {% endblock %}
+
+  {% block contenido %}{% endblock %}
+
+  {% footer_alumno %}
+</body>
+</html>

@@ -1,0 +1,592 @@
+/* ============================================================
+   BUTACA · SISTEMA DE DISEÑO DE LAS PÁGINAS DJANGO
+
+   Usado por: portada (/), páginas de error (400/403/404/500),
+   login de la API, API navegable y Swagger.
+   El panel /admin/ usa además static/css/admin-butaca.css.
+
+   Mismos colores y tipografía que el frontend React
+   (frontend/src/styles/global.css) para una identidad única.
+   ============================================================ */
+
+/* ---------- Variables de diseño ---------- */
+
+:root {
+  --tinta: #120f24;          /* fondo oscuro de cabeceras */
+  --tinta-2: #1d1938;
+  --violeta: #6d28d9;        /* color principal */
+  --violeta-claro: #8b5cf6;
+  --rosa: #ec4899;           /* acento */
+  --degradado: linear-gradient(120deg, #6d28d9 0%, #c026d3 55%, #ec4899 100%);
+
+  --fondo: #f6f5fb;
+  --superficie: #ffffff;
+  --texto: #18162b;
+  --texto-suave: #6b6880;
+  --borde: #e5e3ef;
+
+  --exito: #16a34a;
+  --peligro: #dc2626;
+
+  --radio: 14px;
+  --sombra: 0 1px 2px rgba(18, 15, 36, 0.06), 0 8px 24px rgba(18, 15, 36, 0.06);
+  --fuente: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.butaca {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fuente);
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.55;
+}
+
+.butaca a {
+  color: var(--violeta);
+  text-decoration: none;
+}
+
+.butaca a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Cabecera ---------- */
+
+.cabecera {
+  background: var(--tinta);
+  color: #fff;
+}
+
+.cabecera__interior {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+}
+
+.marca__icono {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--degradado);
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
+}
+
+.marca small {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0;
+}
+
+.cabecera__nav {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cabecera__nav a,
+.cabecera__nav button.enlace {
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cabecera__nav a:hover,
+.cabecera__nav button.enlace:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---------- Contenedor principal ---------- */
+
+.principal {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+/* ---------- Botones ---------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.boton:hover {
+  transform: translateY(-1px);
+}
+
+.boton--primario {
+  background: var(--degradado);
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(192, 38, 211, 0.3);
+}
+
+.boton--secundario {
+  background: var(--superficie);
+  color: var(--texto) !important;
+  border-color: var(--borde);
+}
+
+.boton--claro {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.boton--bloque {
+  width: 100%;
+}
+
+button.enlace {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Tarjetas ---------- */
+
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+}
+
+/* ---------- Formularios ---------- */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.campo label {
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.campo input {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font: inherit;
+  background: #fbfaff;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--violeta-claro);
+  outline-offset: -1px;
+  background: #fff;
+}
+
+.alerta {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.alerta--error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.alerta--info {
+  background: #f5f3ff;
+  color: #4c1d95;
+  border: 1px solid #ddd6fe;
+}
+
+/* ---------- Héroe (portada y login) ---------- */
+
+.heroe {
+  position: relative;
+  overflow: hidden;
+  background: var(--tinta);
+  color: #fff;
+}
+
+/* Brillos de color de fondo: el "toque" visual de la marca. */
+.heroe::before,
+.heroe::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.heroe::before {
+  width: 420px;
+  height: 420px;
+  background: #7c3aed;
+  top: -160px;
+  left: -80px;
+}
+
+.heroe::after {
+  width: 380px;
+  height: 380px;
+  background: #ec4899;
+  bottom: -200px;
+  right: -60px;
+}
+
+.heroe__interior {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 4.5rem;
+}
+
+.heroe h1 {
+  margin: 0.5rem 0 0.75rem;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.heroe p {
+  margin: 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.1rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroe__acciones {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* ---------- Portada: accesos y endpoints ---------- */
+
+.accesos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.acceso {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--texto) !important;
+  text-decoration: none !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.acceso:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(18, 15, 36, 0.1);
+}
+
+.acceso__icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  background: #f3efff;
+}
+
+.acceso h2 {
+  margin: 0.4rem 0 0;
+  font-size: 1.1rem;
+}
+
+.acceso p {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.acceso__rol {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--violeta);
+}
+
+.seccion-titulo {
+  margin: 3rem 0 1rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.75rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla th {
+  background: #faf9fe;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+.metodo {
+  display: inline-block;
+  min-width: 62px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.metodo--get { background: #dcfce7; color: #166534; }
+.metodo--post { background: #dbeafe; color: #1e40af; }
+.metodo--patch { background: #fef3c7; color: #92400e; }
+.metodo--delete { background: #fee2e2; color: #991b1b; }
+
+.tabla code {
+  font-size: 0.85rem;
+}
+
+.rol {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.rol--publico { background: #f1f5f9; color: #475569; }
+.rol--espectador { background: #fce7f3; color: #9d174d; }
+.rol--admin { background: #ede9fe; color: #5b21b6; }
+
+/* ---------- Páginas de error ---------- */
+
+.error {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem;
+  text-align: center;
+}
+
+.error__codigo {
+  font-size: clamp(5rem, 18vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: var(--degradado);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.error__icono {
+  font-size: 2.5rem;
+}
+
+.error h1 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.6rem;
+}
+
+.error p {
+  margin: 0 auto;
+  max-width: 460px;
+  color: var(--texto-suave);
+}
+
+.error__acciones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.error__detalle {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+/* ---------- Login ---------- */
+
+.acceso-login {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+}
+
+.acceso-login .heroe {
+  display: flex;
+  align-items: center;
+}
+
+.acceso-login .heroe__interior {
+  padding: 3rem;
+}
+
+.acceso-login__formulario {
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem;
+}
+
+.acceso-login__formulario .tarjeta {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.acceso-login__formulario h2 {
+  margin: 0 0 0.25rem;
+}
+
+.acceso-login__formulario .subtitulo {
+  margin: 0 0 1.5rem;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .acceso-login {
+    grid-template-columns: 1fr;
+  }
+
+  .acceso-login .heroe__interior {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+/* ---------- Footer con datos del alumno ---------- */
+
+.pie-alumno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  background: var(--tinta);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--fuente);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.pie-alumno__marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pie-alumno__logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  background: var(--degradado);
+}
+
+.pie-alumno__datos strong {
+  color: #fff;
+}
+
+.pie-alumno__sep {
+  margin: 0 0.35rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .pie-alumno {
+    flex-direction: column;
+    text-align: center;
+  }
+}
