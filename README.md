@@ -1,4 +1,4 @@
-# 🎟 Butaca · Sistema de Venta de Entradas
+﻿# 🎟 Butaca · Sistema de Venta de Entradas
 
 Sistema de venta de entradas para eventos y conciertos.
 Backend en **Django REST Framework + PostgreSQL** con autenticación **JWT por roles**, carro persistente, checkout transaccional con control de stock y entradas con código **UUID**. Frontend en **React (Vite)**.
@@ -112,3 +112,16 @@ python manage.py test
 ```
 
 Cubren carrito persistente, checkout y stock, cancelación con reposición, RBAC, filtros, registro, documentación protegida y páginas HTML.
+
+## Instalación y configuración
+
+1. Clonar el repositorio: git clone https://github.com/DaniAce21/Sistema-de-ventas.git
+2. Crear entorno virtual e instalar dependencias: pip install -r requirements.txt
+3. Copiar .env.example a .env y completar: SECRET_KEY, DEBUG, DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
+4. Aplicar migraciones: python manage.py migrate
+5. Crear superusuario: python manage.py createsuperuser
+6. Ejecutar servidor: python manage.py runserver
+
+## Variables de entorno
+
+El proyecto lee configuración sensible desde .env. Nunca comitees este archivo. Usa .env.example como plantilla.
